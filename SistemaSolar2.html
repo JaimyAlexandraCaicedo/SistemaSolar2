@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema Solar</title>
+    <script src="three.js"></script>
+
+</head>
+
+<body>
+<!--Canvas-Escenario de trabajo-->
+
+<script>
+ //Render WEBGL   
+ const renderer = new THREE.WebGLRenderer();
+ renderer.setSize(window.innerWidth, window.innerHeight);
+ document.body.appendChild(renderer.domElement);
+ //No se cambia
+ const camera = new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight,1,300);
+ camera.position.set(0,0,40);
+ const scene = new THREE.Scene();//Grafo de escena
+ //Son los que poco cambian
+ 
+
+ //elementos graficos->primitivas
+ //esferas, cubos, piramides
+//malla, textura= mesh
+
+function AgregOrbita(scene, radiop) {
+    var curve = new THREE.EllipseCurve(0,  0, radiop, radiop, 0,  6.28, false, 0);
+    var points = curve.getPoints( 50 );
+    var geometry = new THREE.BufferGeometry().setFromPoints( points );
+    var materialo = new THREE.LineBasicMaterial( { color : 0x161616} );
+    var ellipse = new THREE.Line( geometry, materialo );
+        scene.add( ellipse );
+}
+
+ var geometria=new THREE.SphereGeometry(2,32,32);
+ var material=new THREE.MeshNormalMaterial();
+ var material = new THREE.MeshBasicMaterial( { color: 0xFFFF00 } );
+ var objetocubo=new THREE.Mesh(geometria, material);
+ var radio=5;
+
+ var geometria1=new THREE.SphereGeometry(2,32,16);
+ var material1=new THREE.MeshNormalMaterial();
+ //var material1=new THREE.MeshBasicMaterial({color: 0x666666});
+ var esfera=new THREE.Mesh(geometria1, material1);
+ var radio1=5;
+ AgregOrbita(scene, 5); //Órbita
+
+ var geometriad=new THREE.SphereGeometry(2,20,20);
+ var materiald=new THREE.MeshNormalMaterial();
+ //var materiald = new THREE.MeshBasicMaterial({color: 0xD5A6BD});
+ var esferad=new THREE.Mesh(geometriad, materiald);
+ radio2 =10;
+ AgregOrbita(scene, 10); //Órbita
+
+ var geometria3=new THREE.SphereGeometry(2,20,20);
+ var material3=new THREE.MeshNormalMaterial();
+ //var material3 = new THREE.MeshBasicMaterial({color: 0x0000FF});
+ var esfera3=new THREE.Mesh(geometria3, material3);
+ radio3 =15;
+ AgregOrbita(scene, 15); //Órbita
+
+ var geometria4=new THREE.SphereGeometry(2,20,20);
+ var material4=new THREE.MeshNormalMaterial();
+ //var material4 = new THREE.MeshBasicMaterial({color: 0xFF0000});
+ var esfera4=new THREE.Mesh(geometria4, material4);
+ radio4 =20;
+ AgregOrbita(scene, 20); //Órbita
+
+ var geometria5=new THREE.SphereGeometry(2,20,20);
+ var material5=new THREE.MeshNormalMaterial();
+ //var material5 = new THREE.MeshBasicMaterial({color: 0x783F04});
+ var esfera5=new THREE.Mesh(geometria5, material5);
+ radio5 =25;
+ AgregOrbita(scene, 25); //Órbita
+
+ var geometria6=new THREE.SphereGeometry(2,20,20);
+ var material6=new THREE.MeshNormalMaterial();
+ //var material6 = new THREE.MeshBasicMaterial({color: 0xFF9900});
+ var esfera6=new THREE.Mesh(geometria6, material6);
+ radio6 =30;
+ AgregOrbita(scene, 30); //Órbita
+
+ var geometria7=new THREE.SphereGeometry(2,20,20);
+ var material7=new THREE.MeshNormalMaterial();
+ var esfera7=new THREE.Mesh(geometria7, material7);
+ radio7 =35;
+ AgregOrbita(scene, 35); //Órbita
+
+ var geometria8=new THREE.SphereGeometry(1,32,32);
+ var material8=new THREE.MeshNormalMaterial();
+ //var material8 = new THREE.MeshBasicMaterial({color: 0x9FC5E8});
+ var esfera8=new THREE.Mesh(geometria8, material8);
+ radio8 =40;
+ AgregOrbita(scene, 40); //Órbita
+
+ var geometria9=new THREE.SphereGeometry(1,32,32);
+ var material9=new THREE.MeshNormalMaterial();
+ //var material9 = new THREE.MeshBasicMaterial({color: 0xEEEEEE});
+ var esfera9=new THREE.Mesh(geometria9, material9);
+ radio9 =45;
+ AgregOrbita(scene, 45); //Órbita
+
+ const materialv = new THREE.LineBasicMaterial( {color:0x6C6B6B } );
+const points = [];
+const points1 = [];
+const points2 = [];
+const points3 = [];
+const points4 = [];
+const points5 = [];
+
+
+function generarAleatorio (min, max){
+return Math.floor(Math.random()*(max-min)+min);
+}
+
+points.push(new THREE.Vector3(generarAleatorio(-10,-20),generarAleatorio(-10,-15),generarAleatorio(-10,-15))); //0
+points.push(new THREE.Vector3(generarAleatorio(-10,-20),generarAleatorio(-10,-15),generarAleatorio(-10,-15))); //0,1
+points.push(new THREE.Vector3(generarAleatorio(-10,-20),generarAleatorio(-10,-15),generarAleatorio(-10,-15)));; 
+
+points1.push(new THREE.Vector3(generarAleatorio(0,-10),generarAleatorio(5,10),generarAleatorio(5,10))); //0
+points1.push(new THREE.Vector3(generarAleatorio(0,-10),generarAleatorio(5,10),generarAleatorio(5,10))); //0,1
+points1.push(new THREE.Vector3(generarAleatorio(0,-10),generarAleatorio(5,10),generarAleatorio(5,10)));; 
+points1.push(new THREE.Vector3(generarAleatorio(0,-10),generarAleatorio(5,10),generarAleatorio(5,10)));; 
+
+points2.push(new THREE.Vector3(generarAleatorio(10,0),generarAleatorio(10,5),generarAleatorio(10,5))); //0
+points2.push(new THREE.Vector3(generarAleatorio(10,0),generarAleatorio(10,5),generarAleatorio(10,5))); //0,1
+points2.push(new THREE.Vector3(generarAleatorio(10,0),generarAleatorio(10,5),generarAleatorio(10,5))); //0,1
+points2.push(new THREE.Vector3(generarAleatorio(10,0),generarAleatorio(10,5),generarAleatorio(10,5))); //0,1
+
+points3.push(new THREE.Vector3(generarAleatorio(-30,-35),generarAleatorio(5,10),generarAleatorio(2,10))); //0
+points3.push(new THREE.Vector3(generarAleatorio(-30,-35),generarAleatorio(5,10),generarAleatorio(2,10))); //0,1
+points3.push(new THREE.Vector3(generarAleatorio(-30,-35),generarAleatorio(5,10),generarAleatorio(2,10))); //0
+points3.push(new THREE.Vector3(generarAleatorio(-30,-35),generarAleatorio(2,10),generarAleatorio(2,10))); //0,1
+
+points4.push(new THREE.Vector3(generarAleatorio(19,21),generarAleatorio(12,5),generarAleatorio(12,5))); //0
+points4.push(new THREE.Vector3(generarAleatorio(19,21),generarAleatorio(12,5),generarAleatorio(12,5))); //0,1
+points4.push(new THREE.Vector3(generarAleatorio(19,21),generarAleatorio(12,5),generarAleatorio(12,5)));
+points4.push(new THREE.Vector3(generarAleatorio(19,21),generarAleatorio(12,5),generarAleatorio(12,5)));
+points4.push(new THREE.Vector3(generarAleatorio(19,21),generarAleatorio(12,5),generarAleatorio(12,5)));
+
+points5.push(new THREE.Vector3(generarAleatorio(-19,-21),generarAleatorio(5,15),generarAleatorio(5,10))); //0
+points5.push(new THREE.Vector3(generarAleatorio(-19,-21),generarAleatorio(5,15),generarAleatorio(5,10))); //0,1
+points5.push(new THREE.Vector3(generarAleatorio(-19,-21),generarAleatorio(5,15),generarAleatorio(5,10)));
+points5.push(new THREE.Vector3(generarAleatorio(-19,-21),generarAleatorio(5,15),generarAleatorio(5,10)));
+points5.push(new THREE.Vector3(generarAleatorio(-19,-21),generarAleatorio(5,15),generarAleatorio(5,10)));
+
+
+const geometry = new THREE.BufferGeometry().setFromPoints(points);
+const line = new THREE.Line (geometry, materialv);
+
+const geometry1 = new THREE.BufferGeometry().setFromPoints(points1);
+const line1 = new THREE.Line (geometry1, materialv);
+
+const geometry2 = new THREE.BufferGeometry().setFromPoints(points2);
+const line2 = new THREE.Line (geometry2, materialv);
+
+const geometry3 = new THREE.BufferGeometry().setFromPoints(points3);
+const line3 = new THREE.Line (geometry3, materialv);
+
+const geometry4 = new THREE.BufferGeometry().setFromPoints(points4);
+const line4 = new THREE.Line (geometry4, materialv);
+
+const geometry5 = new THREE.BufferGeometry().setFromPoints(points5);
+const line5 = new THREE.Line (geometry5, materialv);
+
+ scene.add(objetocubo);
+ scene.add(esfera);
+ scene.add(esferad);
+ scene.add(esfera3);
+ scene.add(esfera4);
+ scene.add(esfera5);
+ scene.add(esfera6);
+ scene.add(esfera7);
+ scene.add(esfera8);
+ scene.add(esfera9);
+ scene.add(line);
+ scene.add(line1);
+ scene.add(line2);
+ scene.add(line3);
+ scene.add(line4);
+ scene.add(line5);
+
+
+ //esfera.position.x= esfera.position.x+5;
+ //x=rcos(a) y y=rsen(a) 
+
+ renderer.render(scene,camera);
+  var a1=1;
+  var a2=8;
+  var a3=3;
+  var a4=6;
+  var a5=5;
+  var a6=2;
+  var a7=7;
+  var a8=4;
+  var a9=9;
+
+  var animar=function(){
+     a1=a1+0.009;
+     a2=a2+0.008;
+     a3=a3+0.007;
+     a4=a4+0.006;
+     a5=a5+0.005;
+     a6=a6+0.004;
+     a7=a7+0.003;
+     a8=a8+0.002;
+     a9=a9+0.001;
+      esfera.position.y=radio1*Math.cos(a1);
+      esfera.position.x=radio1*Math.sin(a1);
+      esferad.position.y=radio2*Math.cos(a2);
+      esferad.position.x=radio2*Math.sin(a2);
+      esfera3.position.y=radio3*Math.cos(a3);
+      esfera3.position.x=radio3*Math.sin(a3);
+      esfera4.position.y=radio4*Math.cos(a4);
+      esfera4.position.x=radio4*Math.sin(a4);
+      esfera5.position.y=radio5*Math.cos(a5);
+      esfera5.position.x=radio5*Math.sin(a5);
+      esfera6.position.y=radio6*Math.cos(a6);
+      esfera6.position.x=radio6*Math.sin(a6);
+      esfera7.position.y=radio7*Math.cos(a7);
+      esfera7.position.x=radio7*Math.sin(a7);
+      esfera8.position.y=radio8*Math.cos(a8);
+      esfera8.position.x=radio8*Math.sin(a8);
+      esfera9.position.y=radio9*Math.cos(a9);
+      esfera9.position.x=radio9*Math.sin(a9);
+      objetocubo.rotation.x+=0.03;//transform group
+      esfera.rotation.x+=0.003;//transform group
+      esferad.rotation.x+=0.001;//transform group
+      esfera3.rotation.x+=0.001;//transform group
+      esfera4.rotation.x+=0.001;//transform group
+      esfera5.rotation.x+=0.001;//transform group
+      esfera6.rotation.x+=0.001;//transform group
+      esfera7.rotation.x+=0.001;//transform group
+      esfera8.rotation.x+=0.001;//transform group
+      esfera9.rotation.x+=0.001;//transform group
+      renderer.render(scene,camera);
+      requestAnimationFrame(animar);//ejectutar un funcion a 60fps//setup
+      
+  }
+
+  animar();
+
+
+</script>
+
+
+
+</body>
+</html>
